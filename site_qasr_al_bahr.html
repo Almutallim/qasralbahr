@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Qasr Al Bahr — قصر البحر | Resort de luxe halal · Mayotte</title>
+<meta name="description" content="La première destination de luxe halal de l'Océan Indien français. Retraites spirituelles, villas privées sur le lagon de Mayotte. 50 places Fondatrices disponibles.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Cinzel:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ocean:#0a1f2e;--ocean-mid:#112a3d;--ocean-deep:#060f17;
+  --gold:#c9a84c;--gold2:#e8d08a;--gold-pale:rgba(201,168,76,0.1);
+  --white:#f8f4ec;--muted:rgba(248,244,236,0.5);--dim:rgba(248,244,236,0.28);
+  --border:rgba(201,168,76,0.18);--red:#e07070;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--ocean-deep);color:var(--white);font-family:'Inter',sans-serif;font-weight:300;overflow-x:hidden;}
+*{cursor:none!important;}
+.cur{position:fixed;width:6px;height:6px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);}
+.cur-r{position:fixed;width:30px;height:30px;border:1px solid rgba(201,168,76,.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform .15s ease;}
+.loader{position:fixed;inset:0;background:var(--ocean-deep);z-index:1000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;transition:opacity .8s,visibility .8s;}
+.loader.out{opacity:0;visibility:hidden;}
+.loader-ar{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:2.5rem;color:var(--gold);}
+.loader-bar{width:120px;height:1px;background:rgba(201,168,76,.15);position:relative;overflow:hidden;}
+.loader-bar::after{content:'';position:absolute;left:-100%;top:0;bottom:0;width:100%;background:var(--gold);animation:lbar 2s ease forwards;}
+@keyframes lbar{to{left:0;}}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.4rem 3rem;display:flex;justify-content:space-between;align-items:center;transition:background .4s,padding .4s;}
+nav.s{background:rgba(6,15,23,.96);backdrop-filter:blur(14px);padding:.9rem 3rem;border-bottom:1px solid var(--border);}
+.nav-logo{font-family:'Cinzel',serif;font-size:.82rem;letter-spacing:.35em;color:var(--gold);text-decoration:none;}
+.nav-cta{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);border:1px solid var(--border);padding:.5rem 1.3rem;text-decoration:none;transition:background .3s,color .3s;}
+.nav-cta:hover{background:var(--gold);color:var(--ocean-deep);}
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.hero-img{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?w=1800&q=85&auto=format&fit=crop') center/cover no-repeat;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,15,23,.65) 0%,rgba(6,15,23,.35) 40%,rgba(6,15,23,.88) 100%);}
+.hero-c{position:relative;z-index:2;text-align:center;padding:2rem 1.5rem;opacity:0;transform:translateY(28px);transition:opacity 1.2s .3s,transform 1.2s .3s;}
+.hero-c.vis{opacity:1;transform:none;}
+.hero-eyebrow{font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.7em;text-transform:uppercase;color:var(--gold);margin-bottom:1.8rem;display:block;}
+.hero-ar{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.6rem,4vw,3rem);color:rgba(248,244,236,.65);letter-spacing:.08em;display:block;line-height:1;margin-bottom:.3rem;}
+.hero-title{font-family:'Cinzel',serif;font-size:clamp(2.5rem,8vw,5.5rem);font-weight:500;letter-spacing:.18em;line-height:1;background:linear-gradient(135deg,var(--white) 0%,var(--gold2) 50%,var(--white) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:1.2rem;}
+.hero-rule{display:flex;align-items:center;justify-content:center;gap:.8rem;margin-bottom:1.2rem;}
+.hero-rule::before,.hero-rule::after{content:'';flex:1;max-width:60px;height:1px;background:var(--gold);opacity:.5;}
+.hero-tagline{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(.95rem,2vw,1.25rem);color:rgba(248,244,236,.8);max-width:520px;margin:0 auto 2rem;line-height:1.75;}
+.hero-meta{display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap;margin-bottom:2.5rem;}
+.hm-item{text-align:center;}
+.hm-label{font-family:'Cinzel',serif;font-size:.52rem;letter-spacing:.45em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.2rem;}
+.hm-val{font-family:'Cormorant Garamond',serif;font-size:.95rem;color:rgba(248,244,236,.75);}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+.btn-p{font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.4em;text-transform:uppercase;background:var(--gold);color:var(--ocean-deep);padding:.95rem 2.2rem;border:none;text-decoration:none;display:inline-block;transition:background .3s,transform .2s;font-weight:500;}
+.btn-p:hover{background:var(--gold2);transform:translateY(-1px);}
+.btn-g{font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.4em;text-transform:uppercase;color:var(--white);padding:.95rem 2.2rem;border:1px solid rgba(248,244,236,.25);text-decoration:none;display:inline-block;transition:border-color .3s,color .3s;}
+.btn-g:hover{border-color:var(--gold);color:var(--gold);}
+.scroll-hint{position:absolute;bottom:1.8rem;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:.4rem;opacity:.4;animation:bob 2.5s ease-in-out infinite;}
+.scroll-hint span{font-family:'Cinzel',serif;font-size:.5rem;letter-spacing:.5em;text-transform:uppercase;color:var(--gold);}
+.sh-line{width:1px;height:35px;background:linear-gradient(to bottom,var(--gold),transparent);}
+@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(5px);}}
+.urgency{background:var(--gold);padding:.65rem 1.5rem;text-align:center;display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap;}
+.urgency-text{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.35em;text-transform:uppercase;color:var(--ocean-deep);font-weight:500;}
+.urgency-count{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--ocean-deep);}
+.urgency-dot{width:6px;height:6px;background:var(--ocean-deep);border-radius:50%;animation:pulse 1.5s ease-in-out infinite;flex-shrink:0;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
+.sec{padding:7rem 2rem;position:relative;}
+.sec-inner{max-width:1080px;margin:0 auto;}
+.reveal{opacity:0;transform:translateY(35px);transition:opacity .85s ease,transform .85s ease;}
+.reveal.vis{opacity:1;transform:none;}
+.sec-label{font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.6em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:1rem;}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:400;color:var(--white);line-height:1.2;margin-bottom:1rem;}
+.sec-title em{color:var(--gold);font-style:italic;}
+.sec-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:var(--muted);line-height:1.7;}
+.gallery{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:280px 200px;gap:6px;margin-top:3rem;}
+.gallery-item{overflow:hidden;position:relative;}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease;display:block;}
+.gallery-item:hover img{transform:scale(1.04);}
+.gallery-item.tall{grid-row:1/3;}
+.gallery-caption{position:absolute;bottom:0;left:0;right:0;padding:.7rem 1rem;background:linear-gradient(to top,rgba(6,15,23,.9),transparent);font-family:'Cinzel',serif;font-size:.52rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);opacity:0;transition:opacity .3s;}
+.gallery-item:hover .gallery-caption{opacity:1;}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.split-img{position:relative;height:480px;overflow:hidden;}
+.split-img img{width:100%;height:100%;object-fit:cover;display:block;}
+.split-img::after{content:'';position:absolute;inset:0;border:1px solid var(--border);}
+.split-img-badge{position:absolute;bottom:1.5rem;left:1.5rem;background:var(--ocean-deep);border:1px solid var(--border);padding:.8rem 1.2rem;font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);}
+.split-body{font-size:.9rem;color:rgba(248,244,236,.7);line-height:1.85;margin:.8rem 0;}
+.founder-bg{background:var(--ocean-mid);position:relative;overflow:hidden;}
+.founder-bg::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 60% at 100% 50%,rgba(201,168,76,.05) 0%,transparent 60%);}
+.founder-grid{display:grid;grid-template-columns:320px 1fr;gap:5rem;align-items:center;}
+.founder-img-wrap{position:relative;}
+.founder-img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;filter:grayscale(20%);}
+.founder-frame{position:absolute;inset:-.8rem;border:1px solid var(--border);z-index:-1;}
+.founder-tag{position:absolute;bottom:-1rem;right:-1rem;background:var(--gold);color:var(--ocean-deep);font-family:'Cinzel',serif;font-size:.52rem;letter-spacing:.3em;text-transform:uppercase;padding:.45rem .9rem;font-weight:500;}
+.founder-quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.25rem;color:var(--white);line-height:1.65;margin-bottom:1.5rem;padding-left:1.2rem;border-left:2px solid var(--gold);}
+.founder-name{font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.25rem;}
+.founder-role{font-size:.82rem;color:var(--muted);display:block;margin-bottom:1.5rem;}
+.creds{display:flex;flex-direction:column;gap:.5rem;}
+.cred{display:flex;align-items:flex-start;gap:.8rem;font-size:.82rem;color:rgba(248,244,236,.6);}
+.cred-dot{width:4px;height:4px;background:var(--gold);border-radius:50%;margin-top:.5rem;flex-shrink:0;}
+.ms-strip{background:var(--gold-pale);border:1px solid var(--border);padding:2rem 2.5rem;display:flex;align-items:center;gap:2.5rem;margin-top:3rem;}
+.ms-logo{font-family:'Cinzel',serif;font-size:.95rem;letter-spacing:.25em;color:var(--gold);white-space:nowrap;}
+.ms-sep{width:1px;height:50px;background:var(--border);flex-shrink:0;}
+.ms-text{font-size:.86rem;color:var(--muted);line-height:1.7;}
+.ms-text strong{color:var(--white);}
+.ms-link{font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(201,168,76,.4);padding-bottom:.1rem;white-space:nowrap;margin-left:auto;}
+.pillars-dark{background:var(--ocean-deep);}
+.pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:3rem;}
+.pillar{background:var(--ocean-deep);padding:2.5rem 2rem;text-align:center;transition:background .3s;}
+.pillar:hover{background:var(--ocean-mid);}
+.p-icon{font-size:1.8rem;margin-bottom:1rem;display:block;}
+.p-ar{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.8rem;color:rgba(201,168,76,.22);display:block;margin-bottom:.4rem;}
+.p-name{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem;display:block;}
+.p-desc{font-size:.83rem;color:var(--muted);line-height:1.7;}
+.exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+.exp-card{position:relative;overflow:hidden;border:1px solid var(--border);}
+.exp-card img{width:100%;height:240px;object-fit:cover;display:block;transition:transform .6s ease;filter:brightness(.72);}
+.exp-card:hover img{transform:scale(1.05);filter:brightness(.55);}
+.exp-over{position:absolute;inset:0;padding:1.5rem;display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(to top,rgba(6,15,23,.95) 0%,rgba(6,15,23,.15) 65%,transparent 100%);}
+.exp-num{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.8rem;color:rgba(201,168,76,.28);position:absolute;top:.8rem;right:1rem;line-height:1;}
+.exp-title{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:500;color:var(--white);margin-bottom:.3rem;}
+.exp-desc{font-size:.78rem;color:rgba(248,244,236,.6);line-height:1.55;}
+.cbar{background:var(--gold-pale);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2rem;display:flex;justify-content:center;gap:4rem;flex-wrap:wrap;}
+.cb-item{text-align:center;}
+.cb-num{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:2.5rem;color:var(--gold);display:block;line-height:1;}
+.cb-label{font-family:'Cinzel',serif;font-size:.52rem;letter-spacing:.45em;text-transform:uppercase;color:var(--dim);margin-top:.3rem;display:block;}
+.wl-bg{background:linear-gradient(180deg,var(--ocean-mid) 0%,var(--ocean-deep) 100%);position:relative;overflow:hidden;}
+.wl-bg::before{content:'';position:absolute;bottom:-300px;left:50%;transform:translateX(-50%);width:700px;height:400px;background:radial-gradient(ellipse,rgba(201,168,76,.07) 0%,transparent 70%);pointer-events:none;}
+.wl-inner{max-width:680px;margin:0 auto;text-align:center;}
+.wl-or{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:2.8rem;color:rgba(201,168,76,.2);display:block;margin-bottom:.5rem;}
+.wl-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:400;color:var(--white);line-height:1.15;margin-bottom:.5rem;}
+.wl-sub{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--muted);font-size:1rem;margin-bottom:1rem;line-height:1.65;}
+.places-bar{display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:2.5rem;flex-wrap:wrap;}
+.places-track{width:200px;height:4px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden;}
+.places-fill{height:100%;background:var(--gold);border-radius:2px;width:62%;}
+.places-txt{font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);}
+.places-alert{font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.35em;text-transform:uppercase;color:var(--red);display:flex;align-items:center;gap:.4rem;}
+.pa-dot{width:5px;height:5px;background:var(--red);border-radius:50%;animation:pulse 1.2s ease-in-out infinite;flex-shrink:0;}
+.tiers{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem;text-align:left;}
+.tier{border:1px solid var(--border);padding:1.5rem;position:relative;transition:border-color .3s,background .3s;}
+.tier.active,.tier:hover{border-color:var(--gold);background:var(--gold-pale);}
+.tier-badge{position:absolute;top:-1px;right:1rem;background:var(--gold);color:var(--ocean-deep);font-family:'Cinzel',serif;font-size:.5rem;letter-spacing:.3em;text-transform:uppercase;padding:.22rem .7rem;font-weight:500;}
+.tier-name{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem;display:block;}
+.tier-price{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:500;color:var(--white);display:block;margin-bottom:.5rem;}
+.tier-perks{list-style:none;padding:0;}
+.tier-perks li{font-size:.78rem;color:var(--muted);padding:.2rem 0;display:flex;gap:.5rem;align-items:flex-start;line-height:1.45;}
+.tier-perks li::before{content:'✦';color:var(--gold);font-size:.45rem;margin-top:.25rem;flex-shrink:0;}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-bottom:.7rem;}
+.fg{display:flex;flex-direction:column;gap:.3rem;}
+.fg.full{grid-column:1/-1;}
+.fg label{font-family:'Cinzel',serif;font-size:.52rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);}
+.fg input,.fg select{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);color:var(--white);padding:.75rem 1rem;font-family:'Inter',sans-serif;font-size:.85rem;font-weight:300;outline:none;transition:border-color .3s;-webkit-appearance:none;appearance:none;}
+.fg input:focus,.fg select:focus{border-color:var(--gold);}
+.fg input::placeholder{color:rgba(248,244,236,.2);}
+.fg select option{background:var(--ocean-mid);}
+.form-submit{width:100%;background:var(--gold);color:var(--ocean-deep);border:none;padding:1.1rem 2rem;font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.5em;text-transform:uppercase;font-weight:500;margin-top:.5rem;transition:background .3s,transform .2s;cursor:pointer;}
+.form-submit:hover{background:var(--gold2);transform:translateY(-1px);}
+.form-note{font-size:.73rem;color:var(--dim);margin-top:.8rem;line-height:1.55;}
+.success{display:none;padding:2.5rem;border:1px solid rgba(201,168,76,.3);background:rgba(201,168,76,.06);text-align:center;}
+.success h3{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:2rem;color:var(--gold);margin-bottom:.5rem;}
+.success p{font-size:.88rem;color:var(--muted);line-height:1.7;}
+.faq-bg{background:var(--ocean-mid);}
+.faq-list{margin-top:2.5rem;display:flex;flex-direction:column;gap:.5rem;}
+.faq-item{border:1px solid var(--border);}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 1.5rem;cursor:pointer;transition:background .3s;}
+.faq-q:hover{background:rgba(201,168,76,.05);}
+.faq-q-text{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:500;color:var(--white);}
+.faq-icon{color:var(--gold);font-size:1.2rem;flex-shrink:0;transition:transform .3s;margin-left:1rem;}
+.faq-item.open .faq-icon{transform:rotate(45deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease;}
+.faq-item.open .faq-a{max-height:300px;}
+.faq-a-inner{padding:.2rem 1.5rem 1.2rem;font-size:.87rem;color:var(--muted);line-height:1.75;border-top:1px solid var(--border);}
+.faq-a-inner strong{color:var(--white);}
+footer{background:var(--ocean-deep);border-top:1px solid var(--border);padding:3rem 2rem;text-align:center;}
+.f-logo{font-family:'Cinzel',serif;font-size:1rem;letter-spacing:.4em;color:var(--gold);display:block;margin-bottom:.2rem;}
+.f-ar{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;color:rgba(201,168,76,.35);display:block;margin-bottom:1rem;}
+.f-links{display:flex;gap:2rem;justify-content:center;margin-bottom:1.5rem;flex-wrap:wrap;}
+.f-links a{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .3s;}
+.f-links a:hover{color:var(--gold);}
+.f-copy{font-size:.7rem;color:rgba(248,244,236,.18);letter-spacing:.08em;line-height:1.7;}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  *{cursor:auto!important;}.cur,.cur-r{display:none;}
+  nav{padding:1rem 1.2rem;} nav.s{padding:.7rem 1.2rem;}
+  .nav-logo{font-size:.7rem;letter-spacing:.2em;}
+  .nav-cta{font-size:.52rem;padding:.4rem .8rem;letter-spacing:.2em;}
+  .hero-meta{gap:1.2rem;}
+  .hero-btns{flex-direction:column;align-items:center;}
+  .btn-p,.btn-g{width:100%;max-width:280px;text-align:center;font-size:.58rem;padding:.85rem 1.2rem;}
+  .sec{padding:4rem 1.2rem;}
+  .gallery{grid-template-columns:1fr 1fr;grid-template-rows:180px 140px;}
+  .gallery-item.tall{grid-row:auto;}
+  .split{grid-template-columns:1fr;gap:2.5rem;}
+  .split-img{height:240px;}
+  .founder-grid{grid-template-columns:1fr;gap:2.5rem;}
+  .founder-img-wrap{max-width:240px;margin:0 auto;}
+  .ms-strip{flex-direction:column;gap:1.2rem;padding:1.5rem;text-align:center;}
+  .ms-sep{width:50px;height:1px;}
+  .ms-link{margin-left:0;}
+  .pillars-grid{grid-template-columns:1fr;}
+  .exp-grid{grid-template-columns:1fr 1fr;gap:1rem;}
+  .exp-card img{height:180px;}
+  .cbar{gap:1.5rem;padding:1.5rem 1rem;}
+  .cb-num{font-size:2rem;}
+  .tiers{grid-template-columns:1fr;}
+  .form-grid{grid-template-columns:1fr;}
+  .urgency{gap:.8rem;padding:.6rem 1rem;}
+  .urgency-text{font-size:.52rem;letter-spacing:.2em;}
+  .f-links{gap:1rem;}
+}
+@media(max-width:480px){
+  .gallery{grid-template-columns:1fr;grid-template-rows:200px 150px 150px;}
+  .exp-grid{grid-template-columns:1fr;}
+  .hero-title{font-size:2rem;letter-spacing:.08em;}
+  .places-bar{flex-direction:column;gap:.7rem;}
+}
+</style>
+</head>
+<body>
+<div class="cur" id="cur"></div>
+<div class="cur-r" id="curR"></div>
+<div class="loader" id="loader">
+  <div class="loader-ar">قصر البحر</div>
+  <div class="loader-bar"></div>
+</div>
+<nav id="nav">
+  <a href="#" class="nav-logo">Qasr Al Bahr</a>
+  <a href="#waitlist" class="nav-cta">Devenir Fondatrice</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-c" id="heroC">
+    <span class="hero-eyebrow">Lagon de Mayotte · Océan Indien · France</span>
+    <span class="hero-ar">قصر البحر</span>
+    <h1 class="hero-title">QASR AL BAHR</h1>
+    <div class="hero-rule"></div>
+    <p class="hero-tagline">La première destination de luxe halal<br>de l'Océan Indien français.</p>
+    <div class="hero-meta">
+      <div class="hm-item"><span class="hm-label">Ouverture</span><span class="hm-val">2027</span></div>
+      <div class="hm-item"><span class="hm-label">Territoire</span><span class="hm-val">Mayotte, France</span></div>
+      <div class="hm-item"><span class="hm-label">Places fondatrices</span><span class="hm-val">19 restantes</span></div>
+    </div>
+    <div class="hero-btns">
+      <a href="#waitlist" class="btn-p">Réserver ma place fondatrice</a>
+      <a href="#concept" class="btn-g">Découvrir le projet</a>
+    </div>
+  </div>
+  <div class="scroll-hint"><span>Défiler</span><div class="sh-line"></div></div>
+</section>
+
+<!-- URGENCY -->
+<div class="urgency">
+  <div class="urgency-dot"></div>
+  <span class="urgency-text">Fondatrices :</span>
+  <span class="urgency-count">19 places restantes sur 50</span>
+  <span class="urgency-text">· Clôture le 30 juin 2026</span>
+</div>
+
+<!-- GALLERY -->
+<section class="sec" id="concept">
+  <div class="sec-inner">
+    <span class="sec-label reveal">Le lagon de Mayotte</span>
+    <h2 class="sec-title reveal">Le 2ème plus grand lagon du monde.<br><em>Sur sol français.</em></h2>
+    <p class="sec-sub reveal">Un cadre naturel d'exception que la plupart des voyageurs ne connaissent pas encore — c'est exactement pourquoi nous y construisons ce resort.</p>
+    <div class="gallery reveal">
+      <div class="gallery-item tall">
+        <img src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=900&q=85&auto=format&fit=crop" alt="Lagon Mayotte eaux turquoise" loading="lazy">
+        <div class="gallery-caption">Lagon de Mayotte</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?w=700&q=85&auto=format&fit=crop" alt="Eaux cristallines Océan Indien" loading="lazy">
+        <div class="gallery-caption">Eaux cristallines</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=700&q=85&auto=format&fit=crop" alt="Villa sur pilotis" loading="lazy">
+        <div class="gallery-caption">Villas sur l'eau</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPLIT CONCEPT -->
+<section class="sec" style="background:var(--ocean-mid);padding-top:5rem;padding-bottom:5rem;">
+  <div class="sec-inner">
+    <div class="split">
+      <div class="split-img reveal">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&q=85&auto=format&fit=crop" alt="Coucher de soleil Océan Indien" loading="lazy">
+        <div class="split-img-badge">Mayotte · Océan Indien · France</div>
+      </div>
+      <div class="reveal">
+        <span class="sec-label">Le concept</span>
+        <h2 class="sec-title">Un endroit qui n'existait<br>pas encore — <em>jusqu'ici.</em></h2>
+        <p class="split-body">Qasr Al Bahr est né d'une conviction : les femmes musulmanes et les couples méritent une destination de luxe qui les accueille sans compromis — dans leur foi, leur féminité, leur besoin de silence et de beauté.</p>
+        <p class="split-body">Au cœur du lagon de Mayotte, nous construisons un resort où chaque détail parle à l'âme. Ce n'est pas un hôtel. C'est une destination de l'être.</p>
+        <p class="split-body">Villas privées sur pilotis. Retraites spirituelles. Gastronomie halal fine. Hammam réservé aux femmes. Prière du Fajr face à l'horizon.</p>
+        <a href="#waitlist" class="btn-p" style="margin-top:1.5rem;display:inline-block;">Rejoindre les Fondatrices</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section class="sec pillars-dark">
+  <div class="sec-inner">
+    <span class="sec-label reveal" style="text-align:center;display:block;">Trois piliers</span>
+    <h2 class="sec-title reveal" style="text-align:center;">Ce que personne d'autre<br>ne peut vous promettre.</h2>
+    <div class="pillars-grid reveal">
+      <div class="pillar">
+        <span class="p-icon">🌊</span><span class="p-ar">الفخامة</span>
+        <span class="p-name">Luxe & Beauté</span>
+        <p class="p-desc">Villas sur pilotis, gastronomie halal fine, hammam de soin, design islamique contemporain. Un cadre architectural inspiré du patrimoine swahili et islamique classique.</p>
+      </div>
+      <div class="pillar">
+        <span class="p-icon">🤍</span><span class="p-ar">الخصوصية</span>
+        <span class="p-name">Intimité & Sécurité</span>
+        <p class="p-desc">Espace femmes entièrement privatisé. Villas couples uniquement. Aucun regard non voulu. Un environnement pensé pour se déposer sans se surveiller.</p>
+      </div>
+      <div class="pillar">
+        <span class="p-icon">🌙</span><span class="p-ar">الروحانية</span>
+        <span class="p-name">Spiritualité & Présence</span>
+        <p class="p-desc">Retraites de tadabbur, prière du Fajr face à l'Océan Indien, cercles d'études avec des chercheuses invitées. On ne revient pas seulement reposée — on revient transformée.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCES -->
+<section class="sec">
+  <div class="sec-inner">
+    <span class="sec-label reveal">Expériences signature</span>
+    <h2 class="sec-title reveal">Des moments conçus<br>pour <em>rester à jamais.</em></h2>
+    <div class="exp-grid reveal">
+      <div class="exp-card">
+        <img src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?w=600&q=80&auto=format&fit=crop" alt="Fajr lever du soleil ocean" loading="lazy">
+        <div class="exp-over"><div class="exp-num">01</div><div class="exp-title">L'Observatoire du Fajr</div><p class="exp-desc">Prière de l'aube face à l'Océan Indien. Tapis de soie, eau de zamzam, silence total.</p></div>
+      </div>
+      <div class="exp-card">
+        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80&auto=format&fit=crop" alt="Retraite spirituelle" loading="lazy">
+        <div class="exp-over"><div class="exp-num">02</div><div class="exp-title">Retraite Spirituelle</div><p class="exp-desc">5 à 7 jours de tadabbur, silence et études avec des chercheuses invitées.</p></div>
+      </div>
+      <div class="exp-card">
+        <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=600&q=80&auto=format&fit=crop" alt="Villa privée lagon" loading="lazy">
+        <div class="exp-over"><div class="exp-num">03</div><div class="exp-title">Villa Privée sur le Lagon</div><p class="exp-desc">Accès direct à l'eau, terrasse privée, plancher de verre. Chaque villa porte le nom d'un jardin du Paradis.</p></div>
+      </div>
+      <div class="exp-card">
+        <img src="https://images.unsplash.com/photo-1515362778563-6a8d0e44bc0b?w=600&q=80&auto=format&fit=crop" alt="Hammam spa femmes" loading="lazy">
+        <div class="exp-over"><div class="exp-num">04</div><div class="exp-title">Hammam Al Sakina</div><p class="exp-desc">Soins au ylang-ylang local, récitation en fond sonore. Réservé exclusivement aux femmes.</p></div>
+      </div>
+      <div class="exp-card">
+        <img src="https://images.unsplash.com/photo-1544550581-5f7ceaf7f31b?w=600&q=80&auto=format&fit=crop" alt="Dhow coucher soleil" loading="lazy">
+        <div class="exp-over"><div class="exp-num">05</div><div class="exp-title">Dhow au Coucher du Soleil</div><p class="exp-desc">Bateau traditionnel privatisé. Dîner gastronomique halal sur le lagon.</p></div>
+      </div>
+      <div class="exp-card">
+        <img src="https://images.unsplash.com/photo-1514912885225-5b5bfba36ef4?w=600&q=80&auto=format&fit=crop" alt="Laylat al Qadr nuit étoilée" loading="lazy">
+        <div class="exp-over"><div class="exp-num">06</div><div class="exp-title">Laylat Al Qadr — 20 places</div><p class="exp-desc">Qiyam face à l'océan. Uniquement pendant les 10 dernières nuits de Ramadan.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COUNTER -->
+<div class="cbar reveal">
+  <div class="cb-item"><span class="cb-num" data-t="2">0</span><span class="cb-label">ème plus grand lagon du monde</span></div>
+  <div class="cb-item"><span class="cb-num" data-t="100">0</span><span class="cb-label">% Halal & Privacy-First</span></div>
+  <div class="cb-item"><span class="cb-num" data-t="3">0</span><span class="cb-label">Espaces distincts (femmes, couples, général)</span></div>
+  <div class="cb-item"><span class="cb-num" data-t="2027">0</span><span class="cb-label">Ouverture prévue</span></div>
+</div>
+
+<!-- FOUNDER -->
+<section class="sec founder-bg">
+  <div class="sec-inner">
+    <div class="founder-grid">
+      <div class="founder-img-wrap reveal">
+        <img class="founder-img" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=700&q=85&auto=format&fit=crop" alt="Fondatrice Qasr Al Bahr" loading="lazy">
+        <div class="founder-frame"></div>
+        <div class="founder-tag">Fondatrice</div>
+      </div>
+      <div class="reveal">
+        <span class="sec-label">La fondatrice</span>
+        <blockquote class="founder-quote">"J'ai voulu créer l'endroit où j'aurais voulu aller — et qui n'existait pas. Un lieu où la femme musulmane n'a pas à choisir entre son luxe et sa foi."</blockquote>
+        <span class="founder-name">Zina Soifi</span>
+        <span class="founder-role">Fondatrice · Qasr Group LLC · Qasr Al Bahr</span>
+        <div class="creds">
+          <div class="cred"><div class="cred-dot"></div><span>Fondatrice de l'Institut Al Muta'allim (Algérie) — enseignement islamique pour femmes</span></div>
+          <div class="cred"><div class="cred-dot"></div><span>Directrice de Muslimah Society — plateforme islamique francophone</span></div>
+          <div class="cred"><div class="cred-dot"></div><span>Bac+4 Data Analysis & Cybersécurité · 3ème année Université Islamique de Riyad</span></div>
+          <div class="cred"><div class="cred-dot"></div><span>Managing Director, Qasr Group LLC — Wyoming, USA (constitué mars 2026)</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="ms-strip reveal">
+      <span class="ms-logo">Muslimah Society</span>
+      <div class="ms-sep"></div>
+      <p class="ms-text"><strong>Qasr Al Bahr est le projet phare de la communauté Muslimah Society.</strong> Plus de 10 000 femmes musulmanes francophones nous font déjà confiance pour leur éducation islamique. Ce resort est la prochaine étape — un espace physique à la hauteur de notre communauté digitale.</p>
+      <a href="https://muslimahsociety.com" target="_blank" class="ms-link">Rejoindre la communauté →</a>
+    </div>
+  </div>
+</section>
+
+<!-- WAITLIST -->
+<section class="sec wl-bg" id="waitlist">
+  <div class="sec-inner">
+    <div class="wl-inner reveal">
+      <span class="wl-or">✦</span>
+      <h2 class="wl-title">Devenez Fondatrice<br>de Qasr Al Bahr</h2>
+      <p class="wl-sub">50 places réservées aux premières femmes qui croient en ce projet. Des avantages exclusifs à vie — et une place dans l'histoire de ce resort.</p>
+      <div class="places-bar">
+        <div class="places-track"><div class="places-fill"></div></div>
+        <span class="places-txt">31 / 50 places prises</span>
+        <span class="places-alert"><span class="pa-dot"></span>19 restantes</span>
+      </div>
+      <div class="tiers">
+        <div class="tier" id="t1" onclick="pickTier(1)">
+          <span class="tier-name">Liste d'attente</span>
+          <span class="tier-price">Gratuit</span>
+          <ul class="tier-perks">
+            <li>Informations en avant-première</li>
+            <li>Accès prioritaire aux réservations à l'ouverture</li>
+            <li>Newsletter exclusive du projet</li>
+          </ul>
+        </div>
+        <div class="tier active" id="t2" onclick="pickTier(2)">
+          <div class="tier-badge">Recommandé</div>
+          <span class="tier-name">Fondatrice</span>
+          <span class="tier-price">1 500 €</span>
+          <ul class="tier-perks">
+            <li>Priorité de réservation 12 mois avant ouverture</li>
+            <li>–15% permanent sur toutes les prestations à vie</li>
+            <li>Invitation à la retraite inaugurale (valeur 2 500€)</li>
+            <li>Coffret Qasr Al Bahr livré à domicile (valeur 150€)</li>
+            <li>Votre nom dans le Registre des Fondatrices</li>
+            <li>Accès au groupe privé Fondatrices</li>
+          </ul>
+        </div>
+      </div>
+      <div id="wlForm">
+        <div class="form-grid">
+          <div class="fg"><label>Prénom *</label><input type="text" id="fn" placeholder="Votre prénom"></div>
+          <div class="fg"><label>Nom *</label><input type="text" id="ln" placeholder="Votre nom"></div>
+          <div class="fg full"><label>Email *</label><input type="email" id="em" placeholder="votre@email.com"></div>
+          <div class="fg"><label>Pays</label><input type="text" id="co" placeholder="France, Algérie…"></div>
+          <div class="fg"><label>Vous êtes</label>
+            <select id="pr"><option value="">Choisir…</option><option>Femme seule / Retraite spirituelle</option><option>Couple marié / Lune de miel</option><option>Les deux</option></select>
+          </div>
+        </div>
+        <input type="hidden" id="tierVal" value="Fondatrice — 1 500€">
+        <button class="form-submit" onclick="submitForm()">Réserver ma place Fondatrice — 1 500€</button>
+        <p class="form-note">L'inscription est gratuite et ne vous engage à aucun paiement immédiat. Nous vous contacterons personnellement pour finaliser votre place. Vos données sont strictement confidentielles.</p>
+      </div>
+      <div class="success" id="successMsg">
+        <h3>بارك الله فيكِ</h3>
+        <p>Votre inscription a bien été reçue.<br>Nous vous contacterons dans les 48 heures.<br><br>
+        <em style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold);font-size:1.1rem;">Bienvenue parmi les Fondatrices de Qasr Al Bahr.</em></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec faq-bg">
+  <div class="sec-inner">
+    <span class="sec-label reveal">Questions fréquentes</span>
+    <h2 class="sec-title reveal">Tout ce que vous<br>voulez savoir.</h2>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">C'est quand et où exactement ?</span><span class="faq-icon">+</span></div>
+        <div class="faq-a"><div class="faq-a-inner">Ouverture prévue en <strong>2027</strong>, à <strong>Mayotte</strong> — île française dans l'Océan Indien. Accessible depuis Paris via une escale (environ 10–11h de vol au total). Le lagon de Mayotte est classé parmi les plus beaux du monde.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">Je paie quoi maintenant en m'inscrivant ?</span><span class="faq-icon">+</span></div>
+        <div class="faq-a"><div class="faq-a-inner"><strong>Rien du tout.</strong> L'inscription est gratuite et sans engagement de paiement immédiat. Nous vous contacterons personnellement pour vous présenter les modalités. Le paiement des 1 500€ se fait uniquement si vous confirmez votre place Fondatrice.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">Est-ce vraiment 100% halal ?</span><span class="faq-icon">+</span></div>
+        <div class="faq-a"><div class="faq-a-inner">Oui sans exception. <strong>100% de la restauration</strong> est certifiée halal. <strong>Pas d'alcool</strong> sur l'ensemble du site. Espace femmes <strong>entièrement privatisé</strong>. Villas réservées aux <strong>couples mariés uniquement</strong>. Le resort a été conçu de A à Z pour que vous n'ayez jamais à faire de compromis.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">Combien coûte un séjour ?</span><span class="faq-icon">+</span></div>
+        <div class="faq-a"><div class="faq-a-inner">Les tarifs définitifs seront annoncés à l'ouverture. En tant que Fondatrice, vous bénéficiez d'un <strong>–15% permanent à vie</strong>. À titre indicatif : chambres retraite à partir de <strong>250€/nuit</strong>, villas couples à partir de <strong>800€/nuit</strong>, retraites packagées 7 jours à partir de <strong>2 500€ tout inclus</strong>.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">Les retraites sont-elles réservées aux femmes seules ?</span><span class="faq-icon">+</span></div>
+        <div class="faq-a"><div class="faq-a-inner">Les <strong>retraites spirituelles et le spa Al Sakina</strong> sont exclusivement féminins, avec entrée séparée. Les <strong>villas couples</strong> forment une aile distincte pour les couples mariés uniquement. Les deux espaces ne se croisent jamais.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">Qui est derrière ce projet ? Est-il sérieux ?</span><span class="faq-icon">+</span></div>
+        <div class="faq-a"><div class="faq-a-inner">Qasr Al Bahr est porté par <strong>Zina Soifi</strong>, fondatrice de l'Institut Al Muta'allim, de Muslimah Society, et de Qasr Group LLC (société enregistrée aux USA en mars 2026). Démarches officielles en cours : dépôt de marque, SAS française, dossiers FEDER et BpiFrance. Ce site accompagne le lancement officiel du projet.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="f-logo">QASR AL BAHR</span>
+  <span class="f-ar">قصر البحر</span>
+  <div class="f-links">
+    <a href="#concept">Le concept</a>
+    <a href="#waitlist">Fondatrices</a>
+    <a href="https://muslimahsociety.com" target="_blank">Muslimah Society</a>
+    <a href="/cdn-cgi/l/email-protection#52313d3c263331261223332120333e30333a207c313d3f"><span class="__cf_email__" data-cfemail="284b47465c494b5c6859495b5a49444a49405a064b4745">[email&#160;protected]</span></a>
+  </div>
+  <p class="f-copy">© 2026 Qasr Al Bahr — Qasr Group LLC. Tous droits réservés.<br>Mayotte, Océan Indien · France · Un projet de Zina Soifi</p>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+const cur=document.getElementById('cur'),curR=document.getElementById('curR');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+(function a(){if(cur){cur.style.left=mx+'px';cur.style.top=my+'px';}rx+=(mx-rx)*.12;ry+=(my-ry)*.12;if(curR){curR.style.left=rx+'px';curR.style.top=ry+'px';}requestAnimationFrame(a);})();
+window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loader').classList.add('out');document.getElementById('heroC').classList.add('vis');},2100);});
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('s',scrollY>60));
+const ro=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('vis'),i*70);});},{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+function animN(el){const t=parseInt(el.dataset.t),dur=t>999?1800:900,s=Date.now();const r=setInterval(()=>{const p=Math.min((Date.now()-s)/dur,1),e2=1-Math.pow(1-p,3);el.textContent=Math.floor(e2*t);if(p>=1){el.textContent=t;clearInterval(r);}},16);}
+const co=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.querySelectorAll('[data-t]').forEach(animN);co.unobserve(x.target);}});},{threshold:.3});
+const cb=document.querySelector('.cbar');if(cb)co.observe(cb);
+function pickTier(n){document.getElementById('t1').classList.toggle('active',n===1);document.getElementById('t2').classList.toggle('active',n===2);const tv=document.getElementById('tierVal'),btn=document.querySelector('.form-submit');if(n===1){tv.value='Liste attente';btn.textContent='Rejoindre la liste — Gratuit';}else{tv.value='Fondatrice 1500€';btn.textContent='Réserver ma place Fondatrice — 1 500€';}}
+function toggleFaq(el){const item=el.parentElement,was=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!was)item.classList.add('open');}
+function submitForm(){const fn=document.getElementById('fn').value.trim(),em=document.getElementById('em').value.trim();if(!fn||!em){alert('Merci de renseigner votre prénom et votre email.');return;}try{const l=JSON.parse(localStorage.getItem('qab')||'[]');l.push({prenom:fn,nom:document.getElementById('ln').value,email:em,pays:document.getElementById('co').value,profil:document.getElementById('pr').value,tier:document.getElementById(
